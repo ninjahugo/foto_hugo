@@ -1,0 +1,26 @@
+{%extends "base.html"%}
+{%block contenido%}
+	<div id="galerias">
+		<div class="cuadrito" style="left:20px">
+			<ul style="list-style-type:none;padding:0px 40px">
+			{%for foto in fotografias%}
+				<span>{{foto.fotos.name|cut:"archivos/fotos/"}}</span>
+	  			<li><img class="img_full"src="{{foto.fotos.url}}" alt="{{foto.relacion}}"></li>
+			
+			{%endfor%}
+			</ul>
+			<div class="rotulo">
+				<div class="pagination">
+   		 		  <span class="step-links">
+     		   		    {% if fotografias.has_previous %}
+         	      		    <a href="?page={{ fotografias.previous_page_number }}">anterior</a>
+      		   		    {% endif %}
+    	                           {% if fotografias.has_next %}
+    		                   <a href="?page={{ fotografias.next_page_number }}">siguiente</a>
+    	                           {% endif %}
+                                 </span>
+                                </div>			</div>
+		</div>
+	
+        </div>
+{%endblock%}
